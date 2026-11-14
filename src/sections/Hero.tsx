@@ -60,7 +60,7 @@ export function Hero() {
             </ul>
           </Reveal>
 
-          <Reveal delay={580} className="pointer-events-auto flex flex-col gap-3 md:col-span-8 lg:col-span-4 lg:col-start-9">
+          <Reveal delay={580} className="pointer-events-auto flex min-w-0 flex-col gap-3 md:col-span-8 lg:col-span-4 lg:col-start-9">
             <div className="flex flex-wrap gap-2">
               <ButtonLink href="#start" variant="ink">
                 Self-host Refweir

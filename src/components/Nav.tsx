@@ -100,7 +100,7 @@ export function Nav() {
   }, [open])
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-3 z-50 flex flex-col items-center px-3 md:top-4">
+    <header className="pointer-events-none fixed inset-x-0 top-[max(0.75rem,env(safe-area-inset-top))] z-50 flex flex-col items-center pl-[max(0.75rem,env(safe-area-inset-left))] pr-[max(0.75rem,env(safe-area-inset-right))] md:top-4">
       <nav
         aria-label="Primary"
         className={`pointer-events-auto relative flex w-full max-w-max items-center justify-between gap-1 rounded-full border border-white/10 bg-ink/85 text-paper shadow-[0_18px_50px_-20px_rgba(0,0,0,0.55)] backdrop-blur-xl transition-[padding,background-color] duration-300 ease-out-quart max-lg:max-w-[440px] ${
@@ -144,7 +144,7 @@ export function Nav() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="grid size-9 place-items-center rounded-full transition-colors duration-200 hover:bg-white/10"
+            className="relative grid size-9 place-items-center rounded-full transition-colors duration-200 hover:bg-white/10 before:absolute before:-inset-1.5 before:rounded-full before:content-['']"
             aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
           >
             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
@@ -157,7 +157,7 @@ export function Nav() {
           </a>
           <button
             type="button"
-            className="grid size-9 place-items-center rounded-full transition-colors duration-200 hover:bg-white/10 lg:hidden"
+            className="relative grid size-9 place-items-center rounded-full transition-colors duration-200 hover:bg-white/10 before:absolute before:-inset-1.5 before:rounded-full before:content-[''] lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -182,7 +182,7 @@ export function Nav() {
       <div
         id="mobile-menu"
         inert={!open}
-        className={`pointer-events-auto mt-2 w-full max-w-[440px] origin-top rounded-[26px] border border-white/10 bg-ink/95 p-2 text-paper backdrop-blur-xl transition-[opacity,transform] duration-300 ease-out-expo lg:hidden ${
+        className={`pointer-events-auto mt-2 w-full max-w-[440px] origin-top overscroll-contain rounded-[26px] border border-white/10 bg-ink/95 p-2 text-paper backdrop-blur-xl transition-[opacity,transform] duration-300 ease-out-expo lg:hidden ${
           open ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-2 opacity-0'
         }`}
       >

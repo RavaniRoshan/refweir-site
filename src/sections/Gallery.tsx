@@ -20,7 +20,7 @@ function Artifact({
   children: ReactNode
 }) {
   return (
-    <Reveal as="figure" delay={delay} className={`group flex flex-col ${className}`}>
+    <Reveal as="figure" delay={delay} className={`group flex min-w-0 flex-col ${className}`}>
       <div
         className={`relative flex-1 overflow-hidden rounded-[20px] transition-transform duration-500 ease-out-expo group-hover:-translate-y-1 ${surface}`}
       >

@@ -65,6 +65,9 @@
     background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    /* Deliberate: no webkit tap flash — interactive elements have :active/hover states */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   p,
   li,
@@ -118,6 +121,7 @@
   line-height: 1.4;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
 }
 @utility type-serif {
   font-family: var(--font-serif);

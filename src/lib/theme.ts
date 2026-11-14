@@ -25,6 +25,8 @@ export function useTheme(): Theme {
 
 export function setTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme
+  const palette = { light: '#ecebe5', dark: '#131311' }
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', palette[theme])
   try {
     localStorage.setItem(STORAGE_KEY, theme)
   } catch {

@@ -157,7 +157,7 @@ export function CopyCommand({ command, tone = 'light', className = '' }: { comma
         type="button"
         onClick={copy}
         aria-label={`Copy command: ${command}`}
-        className={`h-9 shrink-0 rounded-full px-4 text-[12px] font-medium transition-colors duration-200 ${
+        className={`relative h-9 shrink-0 rounded-full px-4 text-[12px] font-medium transition-colors duration-200 before:absolute before:-inset-x-1 before:-inset-y-1.5 before:rounded-full before:content-[''] ${
           dark ? 'bg-white/10 hover:bg-paper hover:text-ink' : 'bg-ink/[0.07] hover:bg-ink hover:text-paper'
         }`}
       >
