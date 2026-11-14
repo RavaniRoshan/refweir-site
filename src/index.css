@@ -1,0 +1,303 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-paper: #ecebe5;
+  --color-paper-2: #e1dfd7;
+  --color-sheet: #f8f7f3;
+  --color-ink: #0e0e0c;
+  --color-ink-2: #161614;
+  --color-ink-3: #20201c;
+  --color-line: #2c2c27;
+  --color-mute: #5b5952;
+  --color-smoke: #929087;
+  --color-signal: #ff5b1f;
+  --color-on-signal: #0e0e0c;
+  --color-literal: #a3481a;
+  --color-ok: #8fdc91;
+  --color-bad: #ff6b57;
+  --color-sand: #e8d9a8;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Dark theme: full inversion. The page flips to near-black with cream ink;
+   the sections that were dark panels (bg-ink) flip to light surfaces.
+   Elements keep using the same utilities — only the variables change. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-paper: #131311;
+  --color-paper-2: #1b1b18;
+  --color-sheet: #1d1d1a;
+  --color-ink: #ecebe5;
+  --color-ink-2: #f2f1ea;
+  --color-ink-3: #e5e3db;
+  --color-mute: #b3b1a8;
+  --color-smoke: #9a988f;
+  --color-literal: #d99a52;
+}
+
+/* Inside dark panels — which become light surfaces in dark mode — alpha
+   hairlines and secondary text flip to ink-on-light. Scoping to elements
+   carrying a bg-ink* class keeps page-level tints untouched. */
+:root[data-theme='dark'] [class*='bg-ink'] {
+  --color-white: #0e0e0c;
+  --color-smoke: #6b6961;
+  --color-mute: #57554e;
+  --color-ok: #157f38;
+  --color-bad: #b3391f;
+  --color-sand: #85681c;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+  p,
+  li,
+  blockquote,
+  figcaption {
+    text-wrap: pretty;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-on-signal);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+}
+
+/* Editorial type scale */
+@utility type-xl {
+  font-size: clamp(3.1rem, 8.6vw, 9.75rem);
+  line-height: 0.9;
+  letter-spacing: -0.048em;
+  font-weight: 600;
+  font-stretch: 86%;
+}
+@utility type-lg {
+  font-size: clamp(2.5rem, 6vw, 6.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.044em;
+  font-weight: 600;
+  font-stretch: 88%;
+}
+@utility type-md {
+  font-size: clamp(1.9rem, 3.6vw, 3.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  font-stretch: 90%;
+}
+@utility type-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+@utility type-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: 100%;
+  letter-spacing: -0.02em;
+}
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--outline-color, var(--color-ink));
+}
+
+/* Inside the wide dark demo panel, demo windows sit flat on the panel
+   instead of stacking card-on-card. */
+[data-flat-panel] .demo-window {
+  border-color: transparent;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* Scroll reveals: opacity + translate only */.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 700ms var(--ease-out-quart),
+    transform 850ms var(--ease-out-expo);
+  transition-delay: var(--d, 0ms);
+}
+.reveal[data-in] {
+  opacity: 1;
+  transform: none;
+}
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.mask-line > span {
+  display: block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 1050ms var(--ease-out-expo);
+  transition-delay: var(--d, 0ms);
+}
+[data-in] .mask-line > span {
+  transform: none;
+}
+
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.marquee {
+  animation: marquee var(--marquee-duration, 42s) linear infinite;
+}
+.marquee-host:hover .marquee,
+.marquee-host:focus-within .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+.flow {
+  animation: flow 1.4s linear infinite;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise-in {
+  animation: rise-in 520ms var(--ease-out-expo) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+.fade-out-late {
+  animation: fade-out 200ms ease-out 650ms both;
+}
+.rise-in-late {
+  animation: rise-in 420ms var(--ease-out-expo) 700ms both;
+}
+
+@keyframes fill-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.fill-x {
+  transform-origin: left center;
+  animation: fill-x var(--fill-duration, 2s) linear both;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: spin 900ms linear infinite;
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.ping {
+  animation: ping 1.8s var(--ease-out-quart) infinite;
+}
+
+@keyframes cfg-flash {
+  0% {
+    background-color: rgb(255 91 31 / 0.32);
+  }
+  100% {
+    background-color: rgb(255 91 31 / 0);
+  }
+}
+.cfg-flash {
+  animation: cfg-flash 1200ms var(--ease-out-quart);
+}
+
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret 1s steps(1) infinite;
+}
+
+/* Receipt teeth */
+.receipt-teeth {
+  height: 8px;
+  background: var(--color-sheet);
+  mask: conic-gradient(from -45deg at bottom, #000 90deg, #0000 0) 0 0 / 16px 100% repeat-x;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .reveal,
+  .mask-line > span {
+    opacity: 1;
+    transform: none;
+  }
+  .marquee {
+    animation: none;
+  }
+}
