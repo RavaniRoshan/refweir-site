@@ -29,6 +29,7 @@ export function setTheme(theme: Theme) {
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', palette[theme])
   try {
     localStorage.setItem(STORAGE_KEY, theme)
+    localStorage.setItem('refweir_theme', theme)
   } catch {
     // Storage unavailable (private mode etc.) — theme still applies for the session.
   }

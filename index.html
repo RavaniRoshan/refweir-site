@@ -17,7 +17,7 @@
     <meta name="theme-color" content="#ecebe5" />
     <script>
       try {
-        var stored = localStorage.getItem('refweir-theme')
+        var stored = localStorage.getItem('refweir-theme') || localStorage.getItem('refweir_theme')
         var theme = stored === 'dark' || stored === 'light' ? stored : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
         document.documentElement.dataset.theme = theme
         var palette = { light: '#ecebe5', dark: '#131311' }
