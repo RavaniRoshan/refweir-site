@@ -76,7 +76,7 @@ export function Hero() {
                 'refweird',
               ]}
             />
-            <p className="type-label text-mute">One binary · :8080 http · :2222 ssh</p>
+            <p className="type-label text-mute">Single pure-Go binary serving HTTP :8080 and SSH :2222</p>
           </Reveal>
         </div>
       </div>
