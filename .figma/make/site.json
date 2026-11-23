@@ -1,11 +1,14 @@
 {
-  "description": "Self-hosted, vendor-neutral Git forge for AI coding agents and engineering teams, with secure agent access, MCP tools, and automated code review.",
+  "description": "Self-hosted, vendor-neutral Git forge for AI coding agents. One Go binary, native MCP, and capability leases that expire in an hour.",
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,
     "ignoreReducedMotion": false
   },
-  "title": "Refweir — The Git forge built for agents, kept by humans"
+  "title": "Refweir — the Git forge built for agents, kept by humans",
+  "openGraph": {
+    "image": "https://refweir.dev/og-image.png"
+  }
 }
