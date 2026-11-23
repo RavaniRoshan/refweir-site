@@ -8,13 +8,69 @@
     <link rel="canonical" href="https://refweir.dev/" />
     <meta property="og:title" content="Refweir — the Git forge built for agents, kept by humans" />
     <meta property="og:description" content="Self-hosted, vendor-neutral Git forge for AI coding agents. One Go binary, native MCP, and capability leases that expire in an hour." />
+    <meta property="og:url" content="https://refweir.dev/" />
+    <meta property="og:site_name" content="Refweir" />
     <meta property="og:image" content="https://refweir.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Refweir — the Git forge built for agents, kept by humans" />
     <meta name="twitter:description" content="Self-hosted, vendor-neutral Git forge for AI coding agents. One Go binary, native MCP, and capability leases that expire in an hour." />
     <meta name="twitter:image" content="https://refweir.dev/og-image.png" />
-    <meta name="theme-color" content="#ecebe5" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ecebe5" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#131311" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Refweir",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Linux, macOS, Windows",
+          "description": "Self-hosted, vendor-neutral Git forge built specifically for autonomous AI coding agents.",
+          "url": "https://refweir.dev/",
+          "license": "https://raw.githubusercontent.com/RavaniRoshan/refweir/main/LICENSE",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "Organization",
+          "name": "Refweir",
+          "url": "https://refweir.dev/",
+          "logo": "https://refweir.dev/favicon.png",
+          "sameAs": [
+            "https://github.com/RavaniRoshan/refweir"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Why not use GitHub or GitLab for AI agents?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Existing forges rely on long-lived user credentials or coarse deploy keys. Refweir issues cryptographically signed capability leases limited to refs/heads/agent/* that automatically expire after one hour."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does an agent interact with Refweir?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Agents interact directly through Model Context Protocol (MCP) endpoints (/mcp and /mcp/readonly) and pure-Go Smart-HTTP/SSH transports."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
     <script>
       try {
         var stored = localStorage.getItem('refweir-theme') || localStorage.getItem('refweir_theme')

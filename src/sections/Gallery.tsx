@@ -275,7 +275,7 @@ function BinaryAnatomy() {
     <div className="flex h-full flex-col p-5 md:p-8">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <p className="text-[26px] font-semibold tracking-[-0.04em] md:text-[32px]">refweir</p>
-        <code className="font-mono text-[12px] text-mute">CGO_ENABLED=0 go build ./cmd/refweir</code>
+        <code className="font-mono text-[12px] text-mute">CGO_ENABLED=0 go build ./cmd/refweird</code>
       </div>
       <ul className="mt-6 space-y-1.5">
         {LAYERS.map((layer, index) => (

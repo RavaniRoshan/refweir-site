@@ -9,8 +9,7 @@ const BENEFITS = [
   { value: '0', unit: 'vendors', text: 'No account to create, no cloud to trust. Any agent, any model.' },
 ]
 
-const SERVER_PHOTO =
-  'https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?q=80&w=1200&h=1500&auto=format&fit=crop'
+const SERVER_PHOTO = '/images/server-light.jpg'
 
 export function Benefits() {
   return (

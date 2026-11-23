@@ -143,7 +143,7 @@ export function Nav() {
         <div className="flex items-center gap-1">
           <a
             href="/docs"
-            className="inline-flex items-center rounded-full px-3 py-1.5 text-[13px] text-paper/70 transition-colors duration-200 hover:text-paper"
+            className="hidden sm:inline-flex items-center rounded-full px-3 py-1.5 text-[13px] text-paper/70 transition-colors duration-200 hover:text-paper"
           >
             Docs
           </a>
@@ -151,7 +151,7 @@ export function Nav() {
             href="https://github.com/RavaniRoshan/refweir"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center rounded-full px-3 py-1.5 text-[13px] text-paper/70 transition-colors duration-200 hover:text-paper"
+            className="hidden sm:inline-flex items-center rounded-full px-3 py-1.5 text-[13px] text-paper/70 transition-colors duration-200 hover:text-paper"
           >
             GitHub
           </a>

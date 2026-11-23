@@ -3,8 +3,7 @@ import { Reveal, RevealLines, useInView, useParallax } from '../lib/motion'
 import { SectionLabel } from '../components/ui'
 import { brandPathFor } from '../components/logos'
 
-const WEIR_PHOTO =
-  'https://images.unsplash.com/photo-1601894097392-9ad3d8c95bc5?q=80&w=2400&h=1400&auto=format&fit=crop'
+const WEIR_PHOTO = '/images/water-weir.jpg'
 
 const CONTRAST = [
   { aspect: 'Interface', then: 'Buttons in a browser', now: 'MCP over JSON-RPC 2.0' },

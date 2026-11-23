@@ -180,7 +180,7 @@ export function LeaseDemo({ active }: DemoProps) {
 
   return (
     <Window
-      title="POST /api/agentlease"
+      title="POST /api/v1/agent/leases"
       meta={
         <span className={`font-mono text-[11px] transition-colors duration-300 ${done ? 'text-ok' : 'text-smoke'}`}>
           {done ? '201 Created' : 'signing…'}
