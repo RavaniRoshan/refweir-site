@@ -6,19 +6,19 @@ const CLIENTS = ['Claude Code', 'Codex', 'Cline', 'Cursor', 'Any MCP client', 'Y
 
 const NOTES = [
   {
-    quote: 'Tried to push to main. The forge declined, and told me exactly which namespace I was allowed to use instead.',
-    who: 'claude-code',
-    where: 'session s_8f21 · ssh :2222',
+    quote: 'remote: refweir: lease scope denies ref refs/heads/main (allowed: refs/heads/agent/*)',
+    who: 'git receive-pack',
+    where: 'pre-receive hook · demo/agent-lab',
   },
   {
-    quote: 'Lease ran out at 60:00. I asked for a new one. Nobody had to rotate anything.',
-    who: 'codex',
-    where: 'lease_91bd · expired',
+    quote: '{"agentId": "claude-code", "allowedRefPrefixes": ["refs/heads/agent/*"], "expiresAt": "2026-11-23T16:34:52Z"}',
+    who: 'agent lease API',
+    where: 'POST /api/v1/agent/leases',
   },
   {
-    quote: 'Read every file in the repository, changed none of them. Exactly what the sandbox promised.',
-    who: 'cline',
-    where: '/mcp/readonly',
+    quote: 'Autonomous review completed: score 100/100, 0 errors, 0 warnings. PR #1 (agent/retry-budget → main) approved.',
+    who: 'agentreviewer',
+    where: 'PR #1 · demo/agent-lab',
   },
 ]
 
@@ -97,8 +97,8 @@ export function Proof() {
 
         <div className="mt-20 md:mt-28">
           <Reveal className="flex items-baseline justify-between gap-6 border-b border-ink/15 pb-4">
-            <p className="type-label text-ink">Heard on the wire</p>
-            <p className="type-label text-mute">Paraphrased from session logs</p>
+            <p className="type-label text-ink">From a recorded session</p>
+            <p className="type-label text-mute">verbatim output, demo/agent-lab, 23 Nov 2026</p>
           </Reveal>
           <div className="grid md:grid-cols-3">
             {NOTES.map((note, index) => (
