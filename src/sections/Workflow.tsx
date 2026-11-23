@@ -32,9 +32,9 @@ const CHAPTERS: Chapter[] = [
   {
     n: '03',
     kicker: 'Push',
-    title: 'Push over HTTP or SSH. Never to main.',
-    body: 'Pure-Go Smart-HTTP on :8080 and an embedded SSH server on :2222 check every ref update against the lease. No cgo, no host OpenSSH — and production branches stay out of reach.',
-    specs: ['smart-http :8080', 'ssh :2222', 'zero cgo'],
+    title: 'Push under lease. Never to main.',
+    body: 'Smart-HTTP on :8080 checks every ref update against the agent\'s capability lease, while the embedded SSH server on :2222 provides key-based developer access. Zero cgo, no external database — and production branches stay out of reach.',
+    specs: ['smart-http :8080', 'ssh :2222', 'lease guard'],
     Demo: PushDemo,
   },
   {
