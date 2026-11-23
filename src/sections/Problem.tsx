@@ -251,6 +251,15 @@ export function Problem() {
                   </span>
                 </Reveal>
               ))}
+              <div className="mt-4 flex justify-end">
+                <a
+                  href="/docs/explanation/capability-leases"
+                  className="inline-flex items-center gap-1.5 text-[14px] text-smoke transition-colors duration-200 hover:text-paper"
+                >
+                  <span>Explore capability lease architecture</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
             </div>
           </div>
 

@@ -142,6 +142,12 @@ export function Nav() {
 
         <div className="flex items-center gap-1">
           <a
+            href="/docs"
+            className="inline-flex items-center rounded-full px-3 py-1.5 text-[13px] text-paper/70 transition-colors duration-200 hover:text-paper"
+          >
+            Docs
+          </a>
+          <a
             href="https://github.com/RavaniRoshan/refweir"
             target="_blank"
             rel="noopener noreferrer"
@@ -207,6 +213,16 @@ export function Nav() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="/docs"
+              onClick={() => setOpen(false)}
+              className="flex items-baseline justify-between rounded-2xl px-4 py-3 text-[22px] font-semibold tracking-[-0.03em] transition-colors duration-200 hover:bg-white/[0.06]"
+            >
+              Docs
+              <span className="type-label text-smoke">{String(NAV_LINKS.length + 2).padStart(2, '0')}</span>
+            </a>
+          </li>
         </ul>
       </div>
     </header>
