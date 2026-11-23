@@ -108,18 +108,30 @@ export function ButtonLink({
   )
 }
 
-export function CopyCommand({ command, tone = 'light', className = '' }: { command: string; tone?: Tone; className?: string }) {
+export function CopyCommand({
+  command,
+  lines,
+  tone = 'light',
+  className = '',
+}: {
+  command?: string
+  lines?: string[]
+  tone?: Tone
+  className?: string
+}) {
   const [state, setState] = useState<'idle' | 'copied' | 'failed'>('idle')
   const codeRef = useRef<HTMLElement>(null)
+  const lineList = lines ?? (command ? command.split('\n') : [])
+  const fullCommand = lines ? lines.join('\n') : (command ?? '')
 
   async function copy() {
     let ok = false
     try {
-      await navigator.clipboard.writeText(command)
+      await navigator.clipboard.writeText(fullCommand)
       ok = true
     } catch {
       const area = document.createElement('textarea')
-      area.value = command
+      area.value = fullCommand
       area.setAttribute('readonly', '')
       area.style.position = 'fixed'
       area.style.opacity = '0'
@@ -141,23 +153,31 @@ export function CopyCommand({ command, tone = 'light', className = '' }: { comma
   }
 
   const dark = tone === 'dark'
+  const isMulti = lineList.length > 1
+
   return (
     <div
-      className={`flex h-12 min-w-0 items-center gap-3 rounded-full border pl-5 pr-1.5 font-mono text-[13px] ${
+      className={`flex min-w-0 ${isMulti ? 'items-start py-3 rounded-2xl' : 'h-12 items-center rounded-full'} gap-3 border pl-5 pr-2 font-mono text-[13px] ${
         dark ? 'border-white/15 bg-white/[0.03] text-paper' : 'border-ink/15 bg-sheet/60 text-ink'
       } ${className}`}
     >
-      <span aria-hidden="true" className={dark ? 'text-signal' : 'text-mute'}>
-        $
-      </span>
-      <code ref={codeRef} className="min-w-0 flex-1 truncate">
-        {command}
-      </code>
+      <div className="flex min-w-0 flex-1 flex-col gap-1.5 py-0.5">
+        {lineList.map((line, idx) => (
+          <div key={idx} className="flex min-w-0 items-center gap-2.5">
+            <span aria-hidden="true" className={`shrink-0 ${dark ? 'text-signal' : 'text-mute'}`}>
+              $
+            </span>
+            <code className="min-w-0 flex-1 truncate text-left" title={line}>
+              {line}
+            </code>
+          </div>
+        ))}
+      </div>
       <button
         type="button"
         onClick={copy}
-        aria-label={`Copy command: ${command}`}
-        className={`relative h-9 shrink-0 rounded-full px-4 text-[12px] font-medium transition-colors duration-200 before:absolute before:-inset-x-1 before:-inset-y-1.5 before:rounded-full before:content-[''] ${
+        aria-label={`Copy command: ${fullCommand}`}
+        className={`relative h-9 shrink-0 ${isMulti ? 'self-start mt-0.5' : ''} rounded-full px-4 text-[12px] font-medium transition-colors duration-200 before:absolute before:-inset-x-1 before:-inset-y-1.5 before:rounded-full before:content-[''] ${
           dark ? 'bg-white/10 hover:bg-paper hover:text-ink' : 'bg-ink/[0.07] hover:bg-ink hover:text-paper'
         }`}
       >

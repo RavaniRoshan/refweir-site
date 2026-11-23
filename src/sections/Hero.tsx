@@ -69,7 +69,13 @@ export function Hero() {
                 Watch it work
               </ButtonLink>
             </div>
-            <CopyCommand command="refweir serve --data ./forge" />
+            <CopyCommand
+              lines={[
+                'curl -fsSL https://raw.githubusercontent.com/RavaniRoshan/refweir/main/scripts/install.sh | bash',
+                'refweird bootstrap --email you@example.com --namespace acme --data-dir ./data',
+                'refweird',
+              ]}
+            />
             <p className="type-label text-mute">One binary · :8080 http · :2222 ssh</p>
           </Reveal>
         </div>

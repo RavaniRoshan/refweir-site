@@ -127,7 +127,14 @@ export function FinalCta() {
               One binary. Two ports. No accounts. Download it, run it, and point your first agent at /mcp.
             </Reveal>
             <Reveal delay={120} className="flex flex-col gap-3 md:col-span-6 md:col-start-7 lg:col-span-5 lg:col-start-8">
-              <CopyCommand command="refweir serve --data ./forge" tone="dark" />
+              <CopyCommand
+                lines={[
+                  'curl -fsSL https://raw.githubusercontent.com/RavaniRoshan/refweir/main/scripts/install.sh | bash',
+                  'refweird bootstrap --email you@example.com --namespace acme --data-dir ./data',
+                  'refweird',
+                ]}
+                tone="dark"
+              />
               <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/10 font-mono text-[12px] sm:grid-cols-4">
                 {[
                   [':8080', 'smart-http'],
