@@ -62,11 +62,11 @@ export function Hero() {
 
           <Reveal delay={580} className="pointer-events-auto flex min-w-0 flex-col gap-3 md:col-span-8 lg:col-span-4 lg:col-start-9">
             <div className="flex flex-wrap gap-2">
-              <ButtonLink href="#start" variant="ink">
-                Self-host Refweir
+              <ButtonLink href="https://demo.refweir.dev" variant="ink">
+                Try the live demo
               </ButtonLink>
-              <ButtonLink href="#product" variant="outline">
-                Watch it work
+              <ButtonLink href="/docs" variant="outline">
+                Read the docs
               </ButtonLink>
             </div>
             <CopyCommand

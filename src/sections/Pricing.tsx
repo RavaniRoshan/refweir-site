@@ -108,13 +108,16 @@ export function Pricing() {
                 </p>
               ))}
             </Reveal>
-            <Reveal delay={340} className="mt-10 flex flex-wrap gap-2">
-              <ButtonLink href="#start" variant="ink">
-                Get the binary
+            <Reveal delay={340} className="mt-10 flex flex-wrap items-center gap-3">
+              <ButtonLink href="https://demo.refweir.dev" variant="ink">
+                Try it live
               </ButtonLink>
               <ButtonLink href="#faq" variant="outline">
                 Read the FAQ
               </ButtonLink>
+              <a href="#start" className="text-[14px] text-mute hover:text-ink underline underline-offset-4 transition-colors">
+                or install it yourself
+              </a>
             </Reveal>
           </div>
 

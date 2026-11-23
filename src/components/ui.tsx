@@ -85,9 +85,12 @@ export function ButtonLink({
   variant?: ButtonVariant
   className?: string
 }) {
+  const isExternal = !href.startsWith('#')
   return (
     <a
       href={href}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
       className={`group inline-flex h-12 items-center gap-3 rounded-full pl-5 pr-1.5 text-[15px] font-medium tracking-[-0.01em] transition-[background-color,color,border-color] duration-300 ease-out-quart ${BUTTON_VARIANTS[variant]} ${className}`}
     >
       <span className="relative block overflow-hidden leading-[1.25]">

@@ -149,11 +149,11 @@ export function FinalCta() {
                 ))}
               </div>
               <div className="mt-2 flex flex-wrap gap-2">
-                <ButtonLink href="#workflow" variant="signal">
-                  See the workflow
+                <ButtonLink href="https://demo.refweir.dev" variant="signal">
+                  Try the live demo
                 </ButtonLink>
-                <ButtonLink href="#policy" variant="outline-dark">
-                  Shape a policy
+                <ButtonLink href="/docs" variant="outline-dark">
+                  Read the docs
                 </ButtonLink>
               </div>
             </Reveal>
@@ -218,13 +218,31 @@ function Footer() {
         </div>
         <nav aria-label="Footer">
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
-            {NAV_LINKS.map((link) => (
-              <li key={link.id}>
-                <a href={`#${link.id}`} className="transition-colors duration-200 hover:text-paper">
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a
+                href="https://github.com/RavaniRoshan/refweir"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors duration-200 hover:text-paper"
+              >
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="/docs" className="transition-colors duration-200 hover:text-paper">
+                Docs
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/RavaniRoshan/refweir/blob/main/LICENSE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors duration-200 hover:text-paper"
+              >
+                Licence (Apache-2.0)
+              </a>
+            </li>
           </ul>
         </nav>
         <p className="font-mono text-[12px]">Pure Go · CGO_ENABLED=0</p>
