@@ -138,7 +138,7 @@ function RejectedPush() {
   return (
     <div className="flex h-full flex-col">
       <pre className="overflow-hidden p-5 font-mono text-[12px] leading-[1.75] text-paper/85 md:p-6">
-        <span className="text-smoke">$ </span>git push origin HEAD:main{'\n'}
+        <span className="text-smoke">$ </span>git push refweir HEAD:main{'\n'}
         <span className="text-smoke">remote: refweir ▸ lease lease_7f3a{'\n'}</span>
         <span className="text-smoke">remote: scope refs/heads/agent/claude/*{'\n'}</span>
         <span className="text-bad">remote: refs/heads/main is outside{'\n'}remote: your lease{'\n'}</span>
