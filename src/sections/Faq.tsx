@@ -2,6 +2,7 @@ import { useId, useLayoutEffect, useRef, useState } from 'react'
 import { Reveal, RevealLines } from '../lib/motion'
 import { ButtonLink, CopyCommand, LogoMark, PlusIcon, SectionLabel } from '../components/ui'
 import { NAV_LINKS } from '../components/Nav'
+import { PrivacyModal, TermsModal } from '../components/TrustModals'
 
 const FAQS = [
   {
@@ -205,6 +206,9 @@ function Wordmark() {
 }
 
 function Footer() {
+  const [privacyOpen, setPrivacyOpen] = useState(false)
+  const [termsOpen, setTermsOpen] = useState(false)
+
   return (
     <footer className="mt-24 md:mt-36">
       <Reveal>
@@ -234,6 +238,24 @@ function Footer() {
               </a>
             </li>
             <li>
+              <button
+                type="button"
+                onClick={() => setPrivacyOpen(true)}
+                className="cursor-pointer transition-colors duration-200 hover:text-paper"
+              >
+                Privacy & Air-Gap
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() => setTermsOpen(true)}
+                className="cursor-pointer transition-colors duration-200 hover:text-paper"
+              >
+                Terms
+              </button>
+            </li>
+            <li>
               <a
                 href="https://github.com/RavaniRoshan/refweir/blob/main/LICENSE"
                 target="_blank"
@@ -247,6 +269,9 @@ function Footer() {
         </nav>
         <p className="font-mono text-[12px]">Pure Go · CGO_ENABLED=0</p>
       </div>
+
+      <PrivacyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
+      <TermsModal open={termsOpen} onClose={() => setTermsOpen(false)} />
     </footer>
   )
 }
