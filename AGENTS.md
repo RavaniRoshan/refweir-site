@@ -35,3 +35,13 @@ This project uses **Tailwind CSS v4** through the `@tailwindcss/vite` plugin con
 `src/main.tsx` imports `src/index.css`, so global font wiring belongs in `src/index.css`. Keep CSS `@import` statements first, then add any `@font-face` rules and font-family defaults there.
 
 Tailwind emits utility classes in `@layer utilities`, and CSS outside any cascade layer overrides every layer regardless of specificity. Put global element styles, such as resets and defaults for `body`, headings, `button`, or `input`, inside `@layer base { ... }` so utility classes on those elements still apply. Tailwind's Preflight already applies `box-sizing: border-box`, removes default margins, and sets `font: inherit` on form controls, so do not repeat those rules.
+
+---
+
+## Superpowers Antigravity Standard Compliance
+
+This project complies with the [Superpowers Antigravity](https://roundpilot.github.io/superpowers-antigravity/) engineering methodology and BCP 14 requirements codified in the root [`AGENT.md`](../AGENT.md):
+- **5-Stage Workflow:** Brainstorm -> Plan -> Build -> Adversarial Review -> Ship.
+- **Evidence Before Assertions:** Always verify builds (`npm run build`) and audits (`npm run verify` or `npm run claims-audit`) before committing.
+- **Brand Neutrality:** Zero vendor-specific legacy references or unsubstantiated claims.
+
