@@ -41,8 +41,8 @@ const CLIENTS: ClientConfig[] = [
     code: ['{ "mcpServers": {', '    "refweir": {', '      "url": "https://forge.internal/mcp/readonly"', '} } }'],
   },
   {
-    name: 'Cursor',
-    file: '.cursor/mcp.json',
+    name: 'IDE',
+    file: 'mcp.json',
     endpoint: '/mcp',
     code: ['{ "mcpServers": {', '    "refweir": {', '      "url": "https://forge.internal/mcp"', '} } }'],
   },
