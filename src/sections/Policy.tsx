@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Reveal, RevealLines } from '../lib/motion'
-import { SectionLabel } from '../components/ui'
+import { SectionLabel, CheckIcon } from '../components/ui'
 
 type Ttl = '15m' | '30m' | '1h' | '4h'
 type Namespace = 'agent' | 'per-agent' | 'bots'
@@ -197,6 +197,8 @@ function Toggle({
 
 export function Policy() {
   const [policy, setPolicy] = useState<Policy>(DEFAULT_POLICY)
+  const [copied, setCopied] = useState(false)
+  const copyTimeoutRef = useRef<number | null>(null)
   const update = <K extends keyof Policy>(key: K, value: Policy[K]) => setPolicy((current) => ({ ...current, [key]: value }))
 
   const lines = buildConfig(policy)
@@ -207,6 +209,14 @@ export function Policy() {
   useEffect(() => {
     previous.current = new Map(lines.map((line) => [line.id, line.text]))
   })
+
+  const handleCopyConfig = () => {
+    const tomlContent = lines.map((l) => l.text).join('\n')
+    navigator.clipboard.writeText(tomlContent)
+    setCopied(true)
+    if (copyTimeoutRef.current) window.clearTimeout(copyTimeoutRef.current)
+    copyTimeoutRef.current = window.setTimeout(() => setCopied(false), 2000)
+  }
 
   const summary = describe(policy)
   const readonly = policy.surface === 'readonly'
@@ -352,7 +362,25 @@ export function Policy() {
                 <Reveal delay={180} className="overflow-hidden rounded-[22px] border border-white/10 bg-ink-2">
                   <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
                     <span className="font-mono text-[12px] text-smoke">refweir.toml</span>
-                    <span className="font-mono text-[11px] text-smoke">{lines.length} lines</span>
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-[11px] text-smoke">{lines.length} lines</span>
+                      <button
+                        type="button"
+                        onClick={handleCopyConfig}
+                        className="flex items-center gap-1 font-mono text-[11px] text-smoke hover:text-paper transition-colors cursor-pointer"
+                        title="Copy configuration TOML"
+                        aria-label="Copy refweir.toml"
+                      >
+                        {copied ? (
+                          <>
+                            <CheckIcon className="size-3 text-ok" />
+                            <span className="text-ok">Copied</span>
+                          </>
+                        ) : (
+                          <span>Copy</span>
+                        )}
+                      </button>
+                    </div>
                   </div>
                   <pre className="overflow-x-auto py-3 font-mono text-[12px] leading-[1.75]">
                     {lines.map((line, index) => (

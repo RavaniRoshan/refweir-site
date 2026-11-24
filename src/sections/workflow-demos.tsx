@@ -52,19 +52,25 @@ export function ConnectDemo({ active }: DemoProps) {
   const reduced = usePrefersReducedMotion()
   const [selected, setSelected] = useState(0)
   const [manual, setManual] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
-    if (!active || manual || reduced) return
+    if (!active || manual || reduced || isHovered) return
     const timer = window.setInterval(() => setSelected((value) => (value + 1) % CLIENTS.length), 3000)
     return () => window.clearInterval(timer)
-  }, [active, manual, reduced])
+  }, [active, manual, reduced, isHovered])
 
   const client = CLIENTS[selected]
   const readonly = client.endpoint === '/mcp/readonly'
 
   return (
-    <Window title={client.file} meta={<span className="font-mono text-[11px] text-smoke">JSON-RPC 2.0</span>}>
-      <div className="flex h-full flex-col">
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="h-full"
+    >
+      <Window title={client.file} meta={<span className="font-mono text-[11px] text-smoke">JSON-RPC 2.0</span>}>
+        <div className="flex h-full flex-col">
         <div role="tablist" aria-label="Agent configuration examples" className="flex flex-wrap gap-1.5">
           {CLIENTS.map((item, index) => (
             <button
@@ -132,6 +138,7 @@ export function ConnectDemo({ active }: DemoProps) {
         </ul>
       </div>
     </Window>
+    </div>
   )
 }
 
