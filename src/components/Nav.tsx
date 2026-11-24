@@ -95,8 +95,13 @@ export function Nav() {
   useEffect(() => {
     if (!open) return
     const onKey = (event: KeyboardEvent) => event.key === 'Escape' && setOpen(false)
+    const onScroll = () => setOpen(false)
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [open])
 
   return (
@@ -223,8 +228,36 @@ export function Nav() {
               <span className="type-label text-smoke">{String(NAV_LINKS.length + 2).padStart(2, '0')}</span>
             </a>
           </li>
+          <li>
+            <a
+              href="https://github.com/RavaniRoshan/refweir"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="flex items-baseline justify-between rounded-2xl px-4 py-3 text-[22px] font-semibold tracking-[-0.03em] transition-colors duration-200 hover:bg-white/[0.06]"
+            >
+              GitHub
+              <span className="type-label text-smoke">{String(NAV_LINKS.length + 3).padStart(2, '0')}</span>
+            </a>
+          </li>
+          <li className="pt-2 px-2 pb-1">
+            <a
+              href="#start"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-center rounded-full bg-signal py-3 text-center text-[15px] font-semibold text-on-signal transition-colors duration-200 hover:bg-paper hover:text-ink"
+            >
+              Self-host
+            </a>
+          </li>
         </ul>
       </div>
+      {open && (
+        <div
+          aria-hidden="true"
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden pointer-events-auto"
+        />
+      )}
     </header>
   )
 }
