@@ -48,7 +48,7 @@ const AGENTS: { name: string; state: string; tone: 'ok' | 'idle' }[] = [
   { name: 'claude-code', state: 'live', tone: 'ok' },
   { name: 'codex', state: 'idle', tone: 'idle' },
   { name: 'cline', state: 'read-only', tone: 'idle' },
-  { name: 'cursor', state: 'idle', tone: 'idle' },
+  { name: 'swe-agent', state: 'idle', tone: 'idle' },
 ]
 
 export function ProductDemo() {

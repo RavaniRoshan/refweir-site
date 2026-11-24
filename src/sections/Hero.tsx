@@ -8,7 +8,7 @@ const STREAM: { ref: string; note: string; tone: 'ok' | 'bad' | 'signal' | 'idle
   { ref: 'refs/heads/main', note: 'rejected · outside lease', tone: 'bad' },
   { ref: 'refs/heads/agent/codex/bump-go-toolchain', note: 'accepted · http :8080', tone: 'ok' },
   { ref: '/mcp/readonly · cline', note: 'read-only sandbox', tone: 'idle' },
-  { ref: 'refs/heads/agent/cursor/split-ledger', note: 'review · 4/4 gates', tone: 'ok' },
+  { ref: 'refs/heads/agent/worker/split-ledger', note: 'review · 4/4 gates', tone: 'ok' },
   { ref: 'lease_91bd', note: 'expired after 60:00', tone: 'idle' },
   { ref: 'PR #142', note: 'merged · three-way', tone: 'signal' },
 ]
