@@ -25,8 +25,8 @@ const FAQS = [
     a: 'No. Refweir is a single hermetic binary compiled with CGO_ENABLED=0. It embeds the React 19 product UI, a pure-Go SSH server on :2222, Smart-HTTP on :8080, SQLite in WAL mode via modernc.org/sqlite, and a bare Git object store on disk.',
   },
   {
-    q: 'How is this different from Cursor Origin?',
-    a: 'Cursor Origin is tied to Cursor accounts and proprietary cloud infrastructure. Refweir is vendor-neutral and open source, runs on hardware you own, and works with whichever agents your team prefers.',
+    q: 'How is this different from proprietary agent cloud platforms?',
+    a: 'Proprietary platforms tie your team to vendor accounts and hosted cloud infrastructure. Refweir is vendor-neutral and open source, runs on hardware you own, and works with whichever agents your team prefers.',
   },
   {
     q: 'Is Refweir only for agents?',
@@ -225,7 +225,7 @@ function Footer() {
                 rel="noopener noreferrer"
                 className="transition-colors duration-200 hover:text-paper"
               >
-                GitHub
+                Source code
               </a>
             </li>
             <li>

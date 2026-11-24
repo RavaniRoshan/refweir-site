@@ -158,7 +158,7 @@ export function Nav() {
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center rounded-full px-3 py-1.5 text-[13px] text-paper/70 transition-colors duration-200 hover:text-paper"
           >
-            GitHub
+            Source
           </a>
           <button
             type="button"
@@ -236,7 +236,7 @@ export function Nav() {
               onClick={() => setOpen(false)}
               className="flex items-baseline justify-between rounded-2xl px-4 py-3 text-[22px] font-semibold tracking-[-0.03em] transition-colors duration-200 hover:bg-white/[0.06]"
             >
-              GitHub
+              Source
               <span className="type-label text-smoke">{String(NAV_LINKS.length + 3).padStart(2, '0')}</span>
             </a>
           </li>

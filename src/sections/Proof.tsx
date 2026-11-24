@@ -23,41 +23,41 @@ const NOTES = [
 ]
 
 type Cell = { text: string; good?: boolean }
-const COMPARISON: { row: string; refweir: Cell; origin: Cell; legacy: Cell }[] = [
+const COMPARISON: { row: string; refweir: Cell; proprietary: Cell; legacy: Cell }[] = [
   {
     row: 'Designed for',
     refweir: { text: 'Autonomous agents and human teams', good: true },
-    origin: { text: "Cursor's own agents" },
+    proprietary: { text: 'Proprietary vendor agents' },
     legacy: { text: 'People in a web browser' },
   },
   {
     row: 'Where it runs',
     refweir: { text: 'Your hardware, self-hosted', good: true },
-    origin: { text: 'Proprietary cloud infrastructure' },
+    proprietary: { text: 'Proprietary cloud infrastructure' },
     legacy: { text: 'Vendor cloud, or a heavy self-host' },
   },
   {
     row: 'Account required',
     refweir: { text: 'None', good: true },
-    origin: { text: 'A Cursor account' },
+    proprietary: { text: 'Vendor subscription account' },
     legacy: { text: 'One per seat' },
   },
   {
     row: 'Works with',
     refweir: { text: 'Any MCP or Git client', good: true },
-    origin: { text: 'The Cursor ecosystem' },
+    proprietary: { text: 'Single vendor ecosystem' },
     legacy: { text: 'Through tokens and integrations' },
   },
   {
     row: 'Agent credentials',
     refweir: { text: 'One-hour HMAC capability leases', good: true },
-    origin: { text: 'Managed by the platform' },
+    proprietary: { text: 'Managed by closed platform' },
     legacy: { text: 'User or app tokens' },
   },
   {
     row: 'Source',
     refweir: { text: 'Open source', good: true },
-    origin: { text: 'Proprietary' },
+    proprietary: { text: 'Proprietary closed source' },
     legacy: { text: 'Varies' },
   },
 ]
@@ -133,7 +133,7 @@ export function Proof() {
               lines={['Same Git.', <>Different <span className="type-serif">allegiance.</span></>]}
             />
             <Reveal as="p" delay={150} className="text-[16px] leading-[1.55] text-mute md:col-span-4 md:col-start-9 md:pt-2 md:text-[17px]">
-              Cursor Origin is tied to Cursor accounts and proprietary cloud infrastructure. Refweir is vendor-neutral,
+              Proprietary agent platforms are tied to closed vendor accounts and hosted infrastructure. Refweir is vendor-neutral,
               open source and runs on your own hardware — for any agent.
             </Reveal>
           </div>
@@ -141,7 +141,7 @@ export function Proof() {
           <p className="type-label mt-10 text-mute md:hidden">Swipe to compare →</p>
           <Reveal delay={100} className="mt-4 overflow-x-auto md:mt-12">
             <table className="w-full min-w-[720px] border-collapse text-left">
-              <caption className="sr-only">Refweir compared with Cursor Origin and traditional forges</caption>
+              <caption className="sr-only">Refweir compared with proprietary cloud platforms and traditional forges</caption>
               <thead>
                 <tr className="type-label">
                   <th scope="col" className="w-[20%] pb-4 font-normal text-mute">
@@ -151,7 +151,7 @@ export function Proof() {
                     Refweir
                   </th>
                   <th scope="col" className="w-[26%] px-5 pb-4 font-normal text-mute">
-                    Cursor Origin
+                    Proprietary platforms
                   </th>
                   <th scope="col" className="w-[26%] px-5 pb-4 font-normal text-mute">
                     Traditional forges
@@ -178,7 +178,7 @@ export function Proof() {
                           {item.refweir.text}
                         </span>
                       </td>
-                      <td className="border-t border-ink/15 px-5 py-5 text-[15px] text-mute">{item.origin.text}</td>
+                      <td className="border-t border-ink/15 px-5 py-5 text-[15px] text-mute">{item.proprietary.text}</td>
                       <td className="border-t border-ink/15 px-5 py-5 text-[15px] text-mute">{item.legacy.text}</td>
                     </tr>
                   )
