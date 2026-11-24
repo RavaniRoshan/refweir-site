@@ -134,14 +134,20 @@ export function Workflow() {
             <div data-flat-panel className="relative h-full rounded-[26px] bg-ink p-3">
               <div className="absolute left-6 top-[-14px] z-10 flex gap-1.5">
                 {CHAPTERS.map((chapter, index) => (
-                  <span
+                  <button
                     key={chapter.n}
-                    className={`rounded-full px-3 py-1 font-mono text-[11px] transition-colors duration-300 ${
-                      active === index ? 'bg-signal text-on-signal' : 'bg-paper-2 text-mute'
+                    type="button"
+                    onClick={() => {
+                      setActive(index)
+                      stepRefs.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                    }}
+                    aria-label={`Jump to step ${chapter.n}: ${chapter.kicker}`}
+                    className={`cursor-pointer rounded-full px-3 py-1 font-mono text-[11px] transition-colors duration-300 hover:opacity-90 ${
+                      active === index ? 'bg-signal text-on-signal font-semibold' : 'bg-paper-2 text-mute hover:text-ink'
                     }`}
                   >
                     {chapter.n} {chapter.kicker}
-                  </span>
+                  </button>
                 ))}
               </div>
               {CHAPTERS.map(({ n, Demo }, index) => (
